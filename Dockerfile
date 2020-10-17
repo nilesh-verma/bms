@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["BMS/BMS.csproj", "BMS/"]
 RUN dotnet restore "BMS/BMS.csproj"
-//COPY . .
+COPY . .
 WORKDIR "/src/BMS"
 RUN dotnet build "BMS.csproj" -c Release -o /app/build
 
