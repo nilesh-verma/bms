@@ -1,0 +1,101 @@
+﻿@model BMS.Models.Movies
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h2 class="text-info">Edit Movie</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="@Model.MovieId" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MovieName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="MovieName" class="form-control" />
+
+                </div>
+                <span asp-validation-for="MovieName" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Actor"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Actor" class="form-control" />
+
+                </div>
+                <span asp-validation-for="Actor" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="length"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="length" class="form-control" />
+
+                </div>
+                <span asp-validation-for="length" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label>Image </label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" id="uploadBox" multiple class="form-control" asp-for="imageUrl" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-3">
+            <img src="@Model.imageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+        </div>
+
+
+        <br />
+        <div class="form-group row" style="margin-left:25%">
+            <a asp-action="Index" class="btn btn-danger " style="margin-right:25px;width:200px;height:40px;text-size-adjust:auto">Cancel</a>
+            <input type="submit" class="btn btn-success" style="width:200px;height:40px;text-size-adjust:auto" value="Update" asp-route-id=@Model.MovieId asp-route-url=@Model.imageUrl />
+
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.tiny.cloud/1/m0yrc02gypdwbpw2su9vwys5mahxctd2f8lu5faa4uc5ydr5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        @*tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format'
+        });
+*@
+
+        function validateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                swal("Error", "Please select an image", "error");
+                return false;
+            }
+            return true;
+        };</script>
+
+}
+
+

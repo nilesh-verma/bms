@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BMS.Models.Theatres>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    @foreach (var item in Model)
+    {
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../PVR.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@item.TheatreName.</h5>
+            @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
+            <a style="width:100%" class="btn btn-primary"   asp-controller="User" asp-action="Movies" > All Movies</a>
+        </div>
+    </div>
+        }
+
+    }
+else
+{
+
+}

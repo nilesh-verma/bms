@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BMS.Models.MovieDetails>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    <h2 style="text-align:center"> Movies </h2>
+    <br />
+
+    <div class="row" >
+        @foreach (var items in Model)
+        {
+        <div class="col-4" style="height=150px;width:100%; border:1px solid black;border-radius:3px;margin:3px">
+            <div>
+                <img  src="@items.imageUrl" width="100px" height="100px" />
+            </div>
+            <br />
+            <h4 style="text-align:center"><u>@items.MovieName</u></h4>
+
+            <label><b>Actor : </b>@items.Actor</label>&nbsp;&nbsp;
+            <label><b>Duration</b> : @items.length</label>&nbsp;&nbsp;
+            <label><b>Description : </b>@items.Description</label>&nbsp;&nbsp;
+
+            <label><b>Available Seat  : </b>@items.seat</label>&nbsp;&nbsp;<br />
+            <a style="width:100%;float:right" class="btn btn-primary" asp-controller="User" asp-action="Book" asp-route-id="@items.TID"> Book</a>
+
+
+
+        </div>
+        }
+
+    </div>
+}
+else
+{
+
+}
